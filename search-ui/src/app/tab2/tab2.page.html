@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Profile Search
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,103 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Job Search</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-lg="3">
+          <ion-card-content class="scrollbar" id="style-1" style="overflow-y: auto;" class="px-0">
+            <app-job-profile [itemData]="selectedItem" (itemSelected)="profileClick($event)"></app-job-profile>
+          </ion-card-content>
+        </ion-col>
+        <ion-col size="12" size-lg="9">
+          <ion-card-content class="px-0">
+            <ion-row>
+              <ion-col size="12" size-lg="8">
+                <ion-row>
+                  <h1><b>{{selectedItem?.searchData?.job_title}}</b></h1>&nbsp;&nbsp;
+                  <p class="mt-1" style="color: rgba(0, 255, 98, 0.637);">(Posted by verified User)</p>
+                </ion-row>
+                <ion-row>
+                  <h2><b>{{selectedItem.searchData?.company_name}}</b></h2>&nbsp;&nbsp;
+                  <ion-icon name="bag" class="mt-1"></ion-icon>&nbsp;&nbsp;<p class="mt-1">
+                    {{selectedItem?.searchData?.job_type}}</p>
+                </ion-row>
+                <ion-row>
+                  <h3><b>Company Job ID : {{selectedItem?.searchData?.company_job_id}}</b></h3>&nbsp;&nbsp;
+                </ion-row>
+
+              </ion-col>
+              <ion-col size="12" size-lg="4" class="text-center">
+                <ion-row>
+                  <ion-button shape="round" fill="outline" color="primary">Apply</ion-button>
+                  <ion-button shape="round" fill="solid" color="warning">
+                    <ion-icon name="heart"></ion-icon>
+                    Saved
+                  </ion-button>
+                  <ion-button shape="round" color="primary" style="border-radius: 50px;">
+                    <ion-icon name="share"></ion-icon>
+                  </ion-button>
+                </ion-row>
+
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12" size-lg="9">
+                <ion-row>
+                  <h4><b><span style="color: rgba(0, 255, 98, 0.637);">Now</span> : 23 Application</b></h4>&nbsp;&nbsp;
+                </ion-row>
+                <ion-row>
+                  <ion-icon class="mt-1" name="menu"></ion-icon>&nbsp;&nbsp; <p>Skills : </p>
+                  <h3> Knowledge , {{selectedItem?.searchData?.skills}}</h3>
+                </ion-row>
+
+                <ion-row class="mt-4">
+                  <h1>Overview</h1>
+                </ion-row>
+                <ion-row>
+                  <p>{{selectedItem?.searchData?.job_description_text}}</p>
+                </ion-row>
+
+                <ion-row class="mt-4">
+                  <h1>Job Description</h1>
+                </ion-row>
+                <ion-row>
+                  <ion-card class="scrollbar" id="style-2" style="height: 500px; width: 900px; overflow-y: auto;">
+                    <div class="p-4">
+                      <p>{{selectedItem?.searchData?.job_description_text}}</p>
+                    </div>
+                    <div class="p-1 px-lg-4">
+                      <h3>Role OverView</h3>
+                      <p>{{selectedItem?.searchData?.job_description_text}}</p>
+                    </div>
+                    <div class="p-1 px-lg-4">
+                      <ion-row class="mt-4">
+                        <h1>Responsibilities : </h1>
+                      </ion-row>
+                      <ion-row *ngFor="let item of selectedItem?.searchData?.keyphrases;let i =index">
+                        <h3>{{i+1}}. {{item}}</h3>
+                      </ion-row>
+                    </div>
+                  </ion-card>
+                </ion-row>
+              </ion-col>
+
+              <!-- hear Job Suitability Score code -->
+              <ion-col size="12" size-lg="3">
+              <app-job-score [itemData]="selectedItem"></app-job-score>
+            </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
 </ion-content>

@@ -1,0 +1,54 @@
+<ion-card class="mb-3 hover-primary" *ngFor="let item of resData?.results; let i = index"
+              (click)="profileClick(item)">
+              <ion-row>
+                <ion-col size="3" class="ion-align-items-start">
+                  <ion-img src="https://lens-storage.storage.googleapis.com/png/7cdd8e049a2444deadab9d32a5e10bf9"
+                    class="rounded-start"></ion-img>
+                </ion-col>
+                <ion-col size="9">
+                  <ion-card-header>
+                    <ion-row class="ion-align-items-center">
+                      <ion-col size="10">
+                        <ion-card-title>{{ item.searchData?.job_title }}</ion-card-title>
+                        <ion-card-subtitle>{{ item.searchData?.company_name }}</ion-card-subtitle>
+                        <ul class="ion-no-margin ion-no-padding list-inline">
+                          <li class="list-inline-item">{{ item.searchData?.work_type }} | {{ item.searchData?.location
+                            }}</li>
+                        </ul>
+                      </ion-col>
+                      <ion-col size="2" class="ion-text-end">
+                        <ion-icon name="heart"></ion-icon>
+                        <div class="row">
+                          <div class="" >
+                            <div class="single-chart chart1">
+                              <svg viewBox="0 0 36 36" class="circular-chart blue">
+                                <path class="circle-bg" d="M18 2.0845
+                                      a 15.9155 15.9155 0 0 1 0 31.831
+                                      a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" stroke-dasharray="90, 100" d="M18 2.0845
+                                      a 15.9155 15.9155 0 0 1 0 31.831
+                                      a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35" class="percentage">{{item.score}}</text>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </ion-col>
+
+                    </ion-row>
+                   
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-row>
+                      <ion-col size="12" >
+                        <ion-label class="me-3"><ion-icon name="calendar"></ion-icon> {{
+                          item.searchData?.min_experience
+                          }} - {{ item.searchData?.max_experience }} Years</ion-label>
+                        <ion-label><ion-icon name="calendar-date"></ion-icon> {{ item.searchData?.work_type
+                          }}</ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </ion-card-content>
+                </ion-col>
+              </ion-row>
+            </ion-card>
